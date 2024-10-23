@@ -8,7 +8,7 @@
     "start-server": "cd mern/server && npm run start",
     "install-client": "cd mern/client && npm install",
     "build-client": "cd mern/client && npm run build",
-    "start-client": "cd mern/client && npm run start"
+    "dev-client": "cd mern/client && npm run dev"
   },
   "author": "",
   "license": "ISC"
