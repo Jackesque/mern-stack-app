@@ -1,0 +1,15 @@
+{
+  "name": "mern-stack-example",
+  "version": "1.0.0",
+  "description": "A simple MERN stack example",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd mern/server && npm install",
+    "start-server": "cd mern/server && node app.js",
+    "install-client": "cd mern/client && npm install",
+    "build-client": "cd mern/client && npm run build",
+    "start-client": "cd mern/client && npm run start"
+  },
+  "author": "",
+  "license": "ISC"
+}
