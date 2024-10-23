@@ -6,6 +6,7 @@
   "scripts": {
     "install-server": "cd mern/server && npm install",
     "start-server": "cd mern/server && npm run start",
+    "start-local-server": "cd mern/server && npm run start-local",
     "install-client": "cd mern/client && npm install",
     "build-client": "cd mern/client && npm run build",
     "dev-client": "cd mern/client && npm run dev"
