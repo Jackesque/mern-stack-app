@@ -8,12 +8,12 @@ coverage
 
 # Production
 build
+dist
 
 # Misc
 *.env
 *.local
 .DS_Store
-dist
 dist-ssr
 
 # Logs
