@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install-server": "cd mern/server && npm install",
-    "start-server": "cd mern/server && node app.js",
+    "start-server": "cd mern/server && npm run start",
     "install-client": "cd mern/client && npm install",
     "build-client": "cd mern/client && npm run build",
     "start-client": "cd mern/client && npm run start"
