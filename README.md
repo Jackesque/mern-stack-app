@@ -1,9 +1,11 @@
-# mern-stack-example
-Mern Stack code for the [Mern Tutorial](https://www.mongodb.com/languages/mern-stack-tutorial)
+# mern-stack-app
 
-[![CI](https://github.com/mongodb-developer/mern-stack-example/actions/workflows/main.yaml/badge.svg)](https://github.com/mongodb-developer/mern-stack-example/actions/workflows/main.yaml)
+A simple MERN stack example.
+
+Inspired by: [Mern Tutorial](https://www.mongodb.com/languages/mern-stack-tutorial)
 
 ## How To Run
+
 Create the file `mern/server/config.env` with your Atlas URI and the server port:
 ```
 ATLAS_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/
@@ -12,18 +14,16 @@ PORT=5050
 
 Start server:
 ```
-cd mern/server
-npm install
-npm start
+npm run install-server && npm run start-server
 ```
 
 Start Web server
 ```
-cd mern/client
-npm install
-npm run dev
+npm run install-client && npm run dev-client
 ```
 
-## Disclaimer
+## How to Deploy
 
-Use at your own risk; not a supported MongoDB product
+Use [Render](https://render.com).
+
+Inspired by: [How to Setup and Deploy a MERN stack project for FREE](https://dev.to/kunalukey/how-to-setup-and-deploy-a-mern-stack-project-for-free-5acl)
