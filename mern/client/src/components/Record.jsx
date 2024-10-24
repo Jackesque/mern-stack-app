@@ -97,8 +97,7 @@ export default function Record() {
               Employee Info
             </h2>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              This information will be displayed publicly so be careful what you
-              share.
+              This information will be displayed publicly so be careful what you share.
             </p>
           </div>
 
