@@ -9,7 +9,7 @@ const CheckoutPage = () => {
   const handleCheckout = async () => {
     try {
       const order = { items: cartItems };
-      await api.post("/orders", order);
+      await api.post("/order", order);
       alert("Order placed successfully!");
       clearCart();
     } catch (error) {

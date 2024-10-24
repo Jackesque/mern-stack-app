@@ -6,10 +6,10 @@ const AdminDashboard = () => {
     <div>
       <h1>Admin Dashboard</h1>
       <ul>
-        <li><Link to="/admin/users">User List</Link></li>
-        <li><Link to="/admin/products">Product List</Link></li>
-        <li><Link to="/admin/orders">Order List</Link></li>
-        <li><Link to="/admin/checkouts">Checkout List</Link></li>
+        <li><Link to="/admin/user">User List</Link></li>
+        <li><Link to="/admin/product">Product List</Link></li>
+        <li><Link to="/admin/order">Order List</Link></li>
+        <li><Link to="/admin/checkout">Checkout List</Link></li>
       </ul>
     </div>
   );

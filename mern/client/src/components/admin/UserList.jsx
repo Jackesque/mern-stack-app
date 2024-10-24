@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../api";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -7,7 +7,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${process.env.SERVER_URL}/admin/users`);
+        const response = await api.get("/admin/user");
         setUsers(response.data);
       } catch (error) {
         console.error("Failed to fetch users:", error);
@@ -20,8 +20,10 @@ const UserList = () => {
     <div>
       <h1>User List</h1>
       <ul>
-        {users.map(user => (
-          <li key={user._id}>{user.name} - {user.email}</li>
+        {users.map((user) => (
+          <li key={user._id}>
+            {user.username} - {user.email}
+          </li>
         ))}
       </ul>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../api";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -7,7 +7,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${process.env.SERVER_URL}/admin/products`);
+        const response = await api.get("admin/product");
         setProducts(response.data);
       } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -15,11 +15,23 @@ const ProductList = () => {
     };
     fetchProducts();
   }, []);
+  const handleAdd = async () => {
+    const newProduct = {
+      name: "New Product",
+      price: 0,
+    };
 
+    try {
+      const response = await api.post("/admin/product", newProduct);
+      setProducts([...products, response.data]);
+    } catch (error) {
+      console.error("Failed to add product:", error);
+    }
+  };
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.SERVER_URL}/admin/products/${id}`);
-      setProducts(products.filter(product => product._id !== id));
+      await api.delete(`/admin/product/${id}`);
+      setProducts(products.filter((product) => product._id !== id));
     } catch (error) {
       console.error("Failed to delete product:", error);
     }
@@ -28,8 +40,9 @@ const ProductList = () => {
   return (
     <div>
       <h1>Product List</h1>
+      <button onClick={handleAdd}>Add product</button>
       <ul>
-        {products.map(product => (
+        {products.map((product) => (
           <li key={product._id}>
             {product.name} - {product.price}
             <button onClick={() => handleDelete(product._id)}>Delete</button>

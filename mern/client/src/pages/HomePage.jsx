@@ -7,9 +7,9 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await api.get("/products");
+      const { data } = await api.get("/product");
       setProducts(data);
-  duc;
+    };
     fetchProducts();
   }, []);
 
@@ -19,6 +19,7 @@ const HomePage = () => {
       <ul>
         {products.map((product) => (
           <li key={product._id}>
+            <img src={product.image} alt={product.name} />
             {product.name} - ${product.price}
           </li>
         ))}

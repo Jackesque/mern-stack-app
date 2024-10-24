@@ -7,6 +7,7 @@ import { CLIENT_URL, SERVER_URL } from "./constants/index.js";
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/product.js';
 import orderRoutes from './routes/order.js';
+import adminRoutes from './routes/admin.js';
 
 const app = express();
 app.use(cookieParser());
@@ -26,7 +27,8 @@ mongoose.connect(process.env.ATLAS_URI)
 // app.use("/record", records);
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
-app.use('/orders', orderRoutes);
+app.use('/order', orderRoutes);
+app.use('/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => {

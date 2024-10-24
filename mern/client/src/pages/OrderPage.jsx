@@ -7,7 +7,7 @@ const OrderPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const { data } = await api.get("/orders");
+        const { data } = await api.get("/order");
         setOrders(data);
       } catch (error) {
         console.error("Error fetching orders:", error);

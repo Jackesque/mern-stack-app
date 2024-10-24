@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import api from "../api";
 
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [loading, setLoading] = useState();
 
   useEffect(() => {
     const checkAuth = async () => {
-      try {
-        await api.get("/auth/validate");
-        setIsAuthenticated(true);
-      } catch (error) {
-        setIsAuthenticated(false);
+      const res = await api.get("/auth/validate");
+      if (res.data.user) {
+        setLoading(true);
+      } else {
+        setLoading(false);
       }
     };
 
     checkAuth();
   }, []);
 
-  if (isAuthenticated === null) return <div>Loading...</div>;
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return loading === undefined ? (
+    <div>Loading...</div>
+  ) : loading ? (
+    children
+  ) : (
+    <Navigate to="/" replace />
+  );
 };
 
 export default ProtectedRoute;
