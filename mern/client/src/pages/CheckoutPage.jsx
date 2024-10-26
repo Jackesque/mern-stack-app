@@ -4,11 +4,11 @@ import { CartContext } from "../context/CartContext";
 import api from "../api";
 
 const CheckoutPage = () => {
-  const { cartItems, clearCart } = useContext(CartContext);
+  const { cartProducts, clearCart } = useContext(CartContext);
 
   const handleCheckout = async () => {
     try {
-      const order = { items: cartItems };
+      const order = { products: cartProducts };
       await api.post("/order", order);
       alert("Order placed successfully!");
       clearCart();

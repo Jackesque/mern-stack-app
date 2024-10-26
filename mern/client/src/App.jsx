@@ -21,6 +21,7 @@ import CheckoutList from "./components/admin/CheckoutList";
 // Import context
 import { CartProvider } from "./context/CartContext";
 import AuthProvider from "./context/AuthContext";
+import AddProduct from "./components/admin/AddProduct";
 
 const App = () => {
   return (
@@ -66,6 +67,8 @@ const App = () => {
               <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
               <Route path="/admin/user" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
               <Route path="/admin/product" element={<ProtectedRoute><ProductList /></ProtectedRoute>} />
+              <Route path="/admin/product/add" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
+              <Route path="/admin/product/edit/:id" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
               <Route path="/admin/order" element={<ProtectedRoute><OrderList /></ProtectedRoute>} />
               <Route path="/admin/checkout" element={<ProtectedRoute><CheckoutList /></ProtectedRoute>} />
             </Routes>

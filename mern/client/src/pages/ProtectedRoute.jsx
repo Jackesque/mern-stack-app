@@ -7,10 +7,11 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async () => {
+      try {
       const res = await api.get("/auth/validate");
       if (res.data.user) {
         setLoading(true);
-      } else {
+      }} catch (error) {
         setLoading(false);
       }
     };

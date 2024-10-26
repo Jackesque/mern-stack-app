@@ -7,7 +7,7 @@ const cartSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    items: [
+    products: [
       {
         productId: {
           type: mongoose.Schema.Types.ObjectId,
@@ -34,9 +34,11 @@ const cartSchema = new mongoose.Schema(
 
 cartSchema.pre("save", async function (next) {
   let total = 0;
-  for (let item of this.items) {
-    const product = await mongoose.model("Product").findById(item.productId);
-    total += product.price * item.quantity;
+  for (let product of this.products) {
+    const { price } = await mongoose
+      .model("Product")
+      .findById(product.productId);
+    total += price * product.quantity;
   }
   this.totalPrice = total;
   next();

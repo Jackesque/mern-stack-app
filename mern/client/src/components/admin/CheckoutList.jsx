@@ -7,7 +7,7 @@ const CheckoutList = () => {
   useEffect(() => {
     const fetchCheckouts = async () => {
       try {
-        const response = await api.get("admin/checkouts");
+        const response = await api.get("/admin/checkouts");
         setCheckouts(response.data);
       } catch (error) {
         console.error("Failed to fetch checkouts:", error);
@@ -27,7 +27,7 @@ const CheckoutList = () => {
             <strong>Total Amount:</strong> ${checkout.totalAmount}<br />
             <strong>Billing Address:</strong> {checkout.billingAddress}<br />
             <strong>Payment Method:</strong> {checkout.paymentMethod}<br />
-            <strong>Items:</strong> {checkout.items.map(item => (
+            <strong>Products:</strong> {checkout.products.map(item => (
               <div key={item.productId}>
                 {item.productName} (Quantity: {item.quantity})
               </div>

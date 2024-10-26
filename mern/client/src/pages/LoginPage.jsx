@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("auth/login", { email, password });
+      const res = await api.post("/auth/login", { email, password });
       setUser(res.data.user);
 
       alert(res.data.message);

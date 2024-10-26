@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContext";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const ProductPage = () => {
   if (!product) return <div>Loading...</div>;
 
   const handleAddToCart = () => {
+    api.post("/cart", { productId: product._id });
     addToCart(product);
     alert("Product added to cart!");
   };
@@ -31,7 +32,11 @@ const ProductPage = () => {
   return (
     <div>
       <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} />
+      <img
+        src={product.imageUrl}
+        alt={product.name}
+        className="w-60 min-h-60"
+      />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       <p>Stock: {product.stock}</p>

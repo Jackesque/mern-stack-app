@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Cart from "../models/Cart.js";
 import jwt from "jsonwebtoken";
 
 export const loginUser = async (req, res) => {
@@ -33,6 +34,8 @@ export const registerUser = async (req, res) => {
   try {
     const user = new User({ username, email, password });
     await user.save();
+    const cart = new Cart({ userId: user._id, products: [] });
+    await cart.save();
     res.status(201).json({
       message: "User registered successfully",
     });

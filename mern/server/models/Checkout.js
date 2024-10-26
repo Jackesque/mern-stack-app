@@ -7,19 +7,22 @@ const checkoutSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    orderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Order",
+      required: true,
+    },
     billingAddress: {
       fullName: { type: String, required: true },
       address: { type: String, required: true },
-      city: { type: String, required: true },
-      postalCode: { type: String, required: true },
-      country: { type: String, required: true },
+      country: { type: String },
     },
     paymentMethod: {
       type: String,
       required: true,
-      enum: ["Credit Card", "Cash", "Other"],
+      // enum: ["Card", "Cash", "Other"],
     },
-    items: [
+    products: [
       {
         productId: {
           type: mongoose.Schema.Types.ObjectId,
@@ -35,7 +38,10 @@ const checkoutSchema = new mongoose.Schema(
     totalPrice: {
       type: Number,
       required: true,
+      min: 0,
+      default: 0,
     },
+    status: { type: String, default: "Pending", required: true },
     isPaid: {
       type: Boolean,
       default: false,
@@ -51,8 +57,8 @@ const checkoutSchema = new mongoose.Schema(
 
 checkoutSchema.pre("save", async function (next) {
   let total = 0;
-  for (let item of this.items) {
-    total += item.price * item.quantity;
+  for (let product of this.products) {
+    total += product.price * product.quantity;
   }
   this.totalPrice = total;
   next();

@@ -13,8 +13,8 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const regRes = await api.post("auth/register", { username, email, password });
-      const res = await api.post("auth/login", { email, password });
+      const regRes = await api.post("/auth/register", { username, email, password });
+      const res = await api.post("/auth/login", { email, password });
       setUser(res.data.user);
 
       alert(regRes.data.message);
